@@ -8,6 +8,10 @@ public class main {
 
         System.out.println("Comenzando ejecución...");
 
+        /* 
+         * Conjuntos con arraylist 
+        */
+
         ArrayList<Integer> conjuntoA = new ArrayList<Integer>();
         conjuntoA.add(1);
         conjuntoA.add(2);
@@ -20,6 +24,7 @@ public class main {
 
         System.out.println("Imprimir Conjunto A: ");
         Conjuntos.imprimir(conjuntoA);
+
         System.out.println("Imprimir Conjunto B: ");
         Conjuntos.imprimir(conjuntoB);
 
@@ -41,30 +46,37 @@ public class main {
         System.out.println("Producto Cartesiano: ");
         Conjuntos.imprimirProductoCartesiano( Conjuntos.productoCartesiano(conjuntoA, conjuntoB) );
 
-        // Conjunto con TDA Lista.
-        TConjunto<Integer> conjunto1 = new TConjunto<>();
-        TConjunto<Integer> conjunto2 = new TConjunto<>();
+        /*
+         * Conjuntos con TDA Lista.
+        */
 
-        conjunto1.insertarElementos(conjuntoA);
-        conjunto2.insertarElementos(conjuntoB);
+        IConjunto<Integer> conjunto1 = new Conjunto<>();
+        for (Integer elemento1 : conjuntoA) {
+            conjunto1.insertarUltimo(new Nodo<Integer>( (Comparable) elemento1, elemento1));
+        }
+
+        IConjunto<Integer> conjunto2 = new Conjunto<>();
+        for (Integer elemento2 : conjuntoB) {
+            conjunto2.insertarUltimo(new Nodo<Integer>( (Comparable) elemento2, elemento2));
+        }
 
         System.out.println("Conjunto1 - elementos: " + conjunto1.cantElementos());
         System.out.println("Conjunto2 - elementos: " + conjunto2.cantElementos() + "\n");
 
         System.out.println("Unión: ");
-        conjunto1.imprimirTConjunto(conjunto1.union(conjunto2));
+        conjunto1.imprimirConjunto(conjunto1.union(conjunto2));
 
         System.out.println("Intersección: ");
-        conjunto1.imprimirTConjunto(conjunto1.interseccion(conjunto2));
+        conjunto1.imprimirConjunto(conjunto1.interseccion(conjunto2));
 
         System.out.println("Diferencia: ");
-        conjunto1.imprimirTConjunto(conjunto1.diferencia(conjunto2));
+        conjunto1.imprimirConjunto(conjunto1.diferencia(conjunto2));
 
         System.out.println("Diferencia Simétrica: ");
-        conjunto1.imprimirTConjunto(conjunto1.diferenciaSimetrica(conjunto2));
+        conjunto1.imprimirConjunto(conjunto1.diferenciaSimetrica(conjunto2));
 
         System.out.println("Complemento: ");
-        conjunto1.imprimirTConjunto(conjunto1.complemento(conjunto2));
+        conjunto1.imprimirConjunto(conjunto1.complemento(conjunto2));
 
         System.out.println("Finalizado.");
     }
